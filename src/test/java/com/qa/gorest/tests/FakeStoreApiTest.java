@@ -12,7 +12,7 @@ import com.qa.rest.constants.APIHttpStatus;
 
 import io.restassured.response.Response;
 
-public class FakeStoreApi extends BaseTest{
+public class FakeStoreApiTest extends BaseTest{
 	
 	@BeforeMethod
 	private void setUpRestClient() {

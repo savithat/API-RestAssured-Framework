@@ -55,9 +55,13 @@ public class CircuitTest extends BaseTest{
 			System.out.println("CountryList1: "+CountryList1);
 			Assert.assertTrue(CountryList1.contains("Spain"));
 			
-//			String circuitId = JsonPath.read(strResponse, "$.MRData.CircuitTable.Circuits[?(@.country == 'Australia')].circuitId");
-//			System.out.println(circuitId);		
+
+			List<String> circuitId = JsonPathValidator.readList(response, "$.MRData.CircuitTable.Circuits[?(@.Location.country == 'Australia')].circuitId");
+			System.out.println(circuitId);	
 			
+			Assert.assertTrue(circuitId.contains("albert_park"));
+			
+			//Mistake I did below quesry (the above query is good)
 //			List<String> circuitId = JsonPath.read(strResponse, "$.MRData.CircuitTable.Circuits.[?(@.country == 'Australia')].circuitId");
 //			System.out.println("circuitId: "+circuitId);
 			
