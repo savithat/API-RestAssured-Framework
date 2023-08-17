@@ -25,10 +25,6 @@ public class FakeStoreApiTest1 extends BaseTest{
 		.extract().response();
 		
 		String res = getAllProduct_Res.asString();
-		
-		
-		System.out.println("just added a line to push to git");
-		
-		
+
 	}
 }
