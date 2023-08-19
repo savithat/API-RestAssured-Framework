@@ -7,7 +7,7 @@
 		<listener class-name="com.qa.gorest.listener.ExtentReportListener" />
 	</listeners>
 
-<!--
+
 	<test name="Amadeus Flight API Test">
 		<parameter name="baseURI" value="https://test.api.amadeus.com" />
 		<parameter name="grantType" value="client_credentials" />
@@ -28,7 +28,7 @@
 			<class name="com.qa.gorest.tests.GetUserTest" />
 		</classes>
 	</test>
--->
+
  	<test name="Go Rest API Schema Validation Test">
 		<parameter name="baseURI" value="https://gorest.co.in" />
 
@@ -36,7 +36,7 @@
 			<class name="com.qa.gorest.tests.APISchemaValidator" />
 		</classes>
 	</test>
-<!--
+
 
 	<test name="Go Rest API Test-CreateUser">
 		<parameter name="baseURI" value="https://gorest.co.in" />
@@ -51,12 +51,10 @@
 		<parameter name="baseURI" value="https://fakestoreapi.com" />
 
 		<classes>
-			<class name="com.qa.gorest.tests.FakeStoreApi" />
+			<class name="com.qa.gorest.tests.FakeStoreApiTest" />
 		</classes>
 	</test>
--->
 
-<!--
 	<test name="Circuit API Test">
 		<parameter name="baseURI" value="http://ergast.com" />
 
@@ -83,6 +81,6 @@
 			<class name="com.qa.gorest.tests.ReqResApiTest" />
 		</classes>
 	</test>
--->
+
 
 </suite>
