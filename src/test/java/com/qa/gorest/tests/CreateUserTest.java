@@ -24,7 +24,7 @@ public class CreateUserTest extends BaseTest{
 	
 	@DataProvider
 	public Object[][] getUserTestData() {
-		return new Object[][] {
+		return new Object[][] { 
 			{"savi", "female","active"},
 			{"savi1", "male","inactive"},
 			{"savi2", "female","active"}
