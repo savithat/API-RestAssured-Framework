@@ -19,7 +19,7 @@
 		</classes>
 	</test>
 
-
+-->
 
 	<test name="Go Rest API Test">
 		<parameter name="baseURI" value="https://gorest.co.in" />
@@ -46,7 +46,7 @@
 		</classes>
 	</test>
 
-
+<!--
 	<test name="Fake Store API's">
 		<parameter name="baseURI" value="https://fakestoreapi.com" />
 
@@ -56,6 +56,7 @@
 	</test>
 -->
 
+<!--
 	<test name="Circuit API Test">
 		<parameter name="baseURI" value="http://ergast.com" />
 
@@ -64,7 +65,7 @@
 		</classes>
 	</test>
 
-<!--
+
 	<test name="XML Circuit API Test">
 		<parameter name="baseURI" value="http://ergast.com" />
 
