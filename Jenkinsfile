@@ -5,13 +5,6 @@ pipeline
     tools{
     	maven 'maven'
         }
-        
-    environment{
-   
-        BUILD_NUMBER = "${BUILD_NUMBER}"
-   
-    }
-    
 
     stages 
     {
@@ -40,49 +33,79 @@ pipeline
             }
         }
                 
-        stage('Regression API automation Tests') {
-    steps {
-        catchError(buildResult: 'SUCCESS' StageResult:'FAILURE'){
-        git 'https://github.com/savthi/API-RestAssured-Framework'
-        sh 'maven clean install'
+        stage('Regression API Automation Test') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/savthi/API-RestAssured-Framework.git'
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml"
+                    
+                }
+            }
         }
-    		}
-		}
-		
-		
-		
-		 stage('Run Docker Image with Regression Tests') {
-    steps {
-        script {
-        		allure([
-        		includeProperties: false,
-        		jdk: '',
-        		properties:[],
-        		reportBuildPolicy:'ALWAYS',
-        		results: path:[['/allure-results']]
-        		])
-        	
-       			 }
-    		}
-		}
-		
-		
-		
-		stage('Publish Regression Extent Report'){
+                
+     
+        stage('Publish Allure Reports') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
+            }
+        }
+        
+        
+        stage('Publish Extent Report'){
             steps{
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
                                   keepAll: false, 
                                   reportDir: 'reports', 
                                   reportFiles: 'APIExecutionReport.html', 
-                                  reportName: 'API HTML Regression Extent Report', 
+                                  reportName: 'API HTML Extent Report', 
                                   reportTitles: ''])
             }
         }
         
         
-         
-
-         
+         stage("Deploy to STAGE"){
+            steps{
+                echo("deploy to STAGE done")
+            }
+        }
+        
+        stage('Sanity Automation Test') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/naveenanimation20/June2023RestAssuredFramework.git'
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml"
+                    
+                }
+            }
+        }
+        
+        
+         stage('Publish Extent Report'){
+            steps{
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: false, 
+                                  reportDir: 'reports', 
+                                  reportFiles: 'APIExecutionReport.html', 
+                                  reportName: 'API HTML Extent Report', 
+                                  reportTitles: ''])
+            }
+        }
+        
+        
+        stage("Deploy to PROD"){
+            steps{
+                echo("deploy to PROD")
+            }
+        }
     }
 }
