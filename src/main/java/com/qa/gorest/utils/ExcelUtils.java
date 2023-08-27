@@ -10,7 +10,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ExcelUtils {
-	public static final String TEST_DATA_SHEET_PATH = "./src/test/resouces/TestData/APITestData.xlsx";
+	public static final String TEST_DATA_SHEET_PATH = "./src/test/resources/TestData/APITestData.xlsx";
 	public static Workbook book;
 	public static Sheet sheet;
 	
