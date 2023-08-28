@@ -30,7 +30,7 @@ pipeline
         stage("Deploy to QA"){
             steps{
                 echo("deploy to qa done")
-            }å
+            }
         }
                 
         stage('Regression API Automation Test') {
